@@ -1,0 +1,25 @@
+
+FUNCIONES.JS:
+
+mostrarProductos: esta función recibe un arreglo de productos desde APP.JS (que a su vez lo obtiene del archivo PRODUCTOS.JSON mediante un fetch).
+Crea todos los elementos html necesarios y los inserta en una section en INDEX.HTML. Además permite, a través de un evento click acceder al archivo DETALLE.HTML, 
+donde se muestra el detalle del elemento clikeado. Para lograr eso, el elemento es guardado en localstorage desde INDEX.HTML y obtenido desde allí en DETALLE.HTML.
+
+mostrarDetalles: recibe desde localstorage un producto, en forma de objeto Json, y crea los elementos html necesarios para mostrarlo en el archivo DETALLE.HTM.
+También crea un botón que permite agregar el producto mostrado al carrito de compra. 
+
+agregarCarrito: está función permite agregar el producto seleccionado por el usuario a su carrito de compra. Lo hace utilizando un arreglo vacio, al que se le agregan los elementos del localstorage con clave "Carrito".
+Luego le agrega el producto seleccionado y guarda todos los elementos que contiene en el localstorage con la clave "Carrito".
+
+obtener y guardar: estas dos funciones son utilizadas por la función anterior. Obtienen los elementos de localstorage y guardan elementos en localstorage respectivamente, haciendo las conversiones necesarias de string a json y viceversa.
+
+mostrarCarrito: esta función muestra los elementos del arreglo carrito en el archivo CARRTO.HTML, creando las etiquetas necesarias de html. Obtiene el arreglo mediante la función OBTENER desde localstorage.
+También crea y le da funcionalidad a un botón que permite eliminar un producto del arreglo, así como de localstorage. También permite simular la finalización de la compra. Para esto elimina todos los elementos del carrito (incluyendo en localstorage)
+y devuelve el mensaje "Gracias por su compra". También muestra la suma de los precios de los productos seleccionados.
+
+finalizarCompra: permite eliminar los elementos de localstorage y del carrito que se muestra en CARRITO.HTML. Permite simular el fin de la compra.
+
+eliminarProducto: permite eliminar un producto del carrito, tanto en el carrito que se muestra como en el localstorage.
+
+devolverTotal: devuelve la suma total de los productos seleccionados que integran el carrito. 
+

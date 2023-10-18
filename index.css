@@ -1,0 +1,173 @@
+
+.contenedor{
+    display: grid;
+    grid-template-columns: 80%;
+    grid-template-rows: auto;
+    gap: 25px;
+    justify-content: center;
+}
+button{
+    background-color: crimson;
+    color: white;
+    border-radius: 10px;
+}
+.detalle{
+    width: 80%;
+    height: auto;
+    margin-left: 10%;
+    background-color:rgb(255, 255, 255);
+    justify-content: space-between;
+    border-radius: 1rem;
+    box-shadow: 5px 5px 5px 5px rgb(189, 185, 185);
+    padding: 10px;
+    grid-template-areas:
+    "nombre "
+    "descripcion"
+    "precio "
+    "foto"
+    "boton";
+}
+.carrito{
+    width: 85%;
+    height: 30px;
+    background-color:rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 1rem;
+    box-shadow: 5px 5px 5px 5px rgb(189, 185, 185);
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.carrito article{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+.contenedorCarrito{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.contenedorCarrito button{
+    width: 20%;
+    height: 80%;
+}
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+nav{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    background-color:rgb(58, 65, 65);
+    margin-bottom: 35px;
+    color: gold;
+    text-shadow: 5px 5px 2px rgb(130, 110, 110);
+    gap: 45px;
+    font-size: 20px;
+}
+.home, .enlaceCarrito{
+    cursor: pointer;
+}
+.producto{
+    cursor: pointer;
+    background-color:rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 1rem;
+    box-shadow: 5px 5px 5px 5px rgb(189, 185, 185);
+    display: grid;
+    grid-template-areas:
+    "h2 figura"
+    "p figura" ;
+}
+.producto:hover{
+    box-shadow: 5px 5px 5px 5px rgb(219, 221, 172);
+}
+h2{
+    grid-area: h2;
+}
+.producto p{
+    grid-area: p;
+}
+.producto figure{
+    grid-area: figura;
+    width: 60px;
+    height: 70px;
+}
+.carro h4, h5{
+    display: inline-block;
+}
+
+.detalle h2{
+    grid-area: nombre;
+}
+.detalle figure{
+    grid-area: foto;
+}
+.detalle p{
+    grid-area: descripcion;
+}
+.detalle h4{
+    grid-area: precio;
+}
+.detalle button{
+    grid-area: boton;
+}
+body{
+    background-color: rgb(222, 207, 235);
+}
+
+@media (min-width: 480px) and (max-width: 830px) {
+.contenedor{
+    display: grid;
+    grid-template-columns: 45% 45%;
+    grid-template-rows: auto;
+    gap: 25px;
+    justify-content: center;
+}
+.carrito{
+    width: 40%;
+}
+.contenedorCarrito button{
+    width: 25%;
+}
+
+}
+
+@media (min-width: 768px) {
+.contenedor{
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    grid-template-rows: auto;
+}
+
+.contenedorCarrito button{
+    width: 10%;
+}
+.carrito{
+    width: 35%;
+}
+.carrito article{
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+}
+.detalle{
+    width: 50%;
+    padding: 25px;
+    display: grid;
+    grid-template-areas:
+    "nombre foto"
+    "descripcion foto"
+    "precio foto"
+    "boton foto";
+}
+}
+
+
+
