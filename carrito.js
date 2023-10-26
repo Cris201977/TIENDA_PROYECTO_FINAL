@@ -1,2 +1,2 @@
-import { mostrarCarrito } from "./funciones.js";
+import { mostrarCarrito, realizarPago } from "./funciones.js";
 mostrarCarrito()

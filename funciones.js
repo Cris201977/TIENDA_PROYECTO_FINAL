@@ -1,4 +1,4 @@
-export { mostrarProductos, mostrarDetalles, obtener, mostrarCarrito }
+export { mostrarProductos, mostrarDetalles, obtener, mostrarCarrito, realizarPago }
 
 const contenedorDetalle = document.getElementById("contenedorDetalle")
 const contenedor = document.getElementById("contenedor")
@@ -71,7 +71,6 @@ const guardar = function (producto, clave) {
 }
 
 const mostrarCarrito = function (carrito) {
-    console.log(carrito)
     const total = document.querySelector(".total")
     const contenedorCarrito = document.querySelector(".contenedorCarrito")
     const btnFinalizarCompra = document.createElement("button")
@@ -100,8 +99,7 @@ const finalizarCompra = function(){
     const opcionFinalizar = confirm("¿Desea realizar la compra?")
     console.log(opcionFinalizar)
     if (opcionFinalizar ==true) {
-        localStorage.clear()
-        contenedorCarrito.innerHTML = "<h1>¡Gracias por su compra!</h1>"
+        realizarPago(contenedorCarrito)
     }
 }
 
@@ -122,5 +120,57 @@ const devolverTotal = function () {
     })
     return suma
 }
-
+const realizarPago = function (contenedorCarrito){
+    const formulario = document.createElement("form")
+    const tarjeta = document.createElement("input")
+    const nombre = document.createElement("input")
+    const apellido = document.createElement("input")
+    const btnPagar = document.createElement("button")
+    btnPagar.innerHTML = "Efectuar pagar";
+    formulario.addEventListener("submit", (e)=>{
+        e.preventDefault();
+        console.log(e.target.elements)
+        const nom = e.target.elements["nombre"];
+        const ape = e.target.elements["apellido"];
+        const tarj = e.target.elements["tarjeta"]
+        const valorNom = nom.value
+        const valorApe = ape.value
+        const valorTarj = tarj.value
+        const procPago = document.createElement("p")
+        procPago.innerHTML = "Procesando pago..."
+        contenedorCarrito.append(procPago)
+        setTimeout(() => {
+        if((valorApe.length >2)&&(valorApe.length>2)&&(valorTarj.length==16)){
+            contenedorCarrito.innerHTML = ""
+            localStorage.clear()
+            contenedorCarrito.innerHTML = "<h1>¡Gracias por su compra!</h1>"
+        } else {
+            contenedorCarrito.innerHTML = "<h3 class='NoPago'>El pago no pudo ser procesado.</h3>"
+            contenedorCarrito.innerHTML += "<p>" + "Regrese al Carrito e intentelo nuevamente." + "</p>"
+        }
+    }, 5000);
+    })
+        const procPago = document.createElement("p")
+        procPago.innerHTML = "Procesando pago..."
+        contenedorCarrito.append(procPago)
+    formulario.setAttribute("id", "add")
+    btnPagar.setAttribute("type", "submit")
+    nombre.setAttribute("placeholder", "Ingrese su nombre")
+    nombre.setAttribute("type", "text")
+    nombre.setAttribute("id", "nombre")
+    nombre.setAttribute("maxlength", 12)
+    nombre.setAttribute("minlength", 2)
+    apellido.setAttribute("type", "text")
+    apellido.setAttribute("placeholder", "Ingrese su apellido")
+    apellido.setAttribute("id", "apellido")
+    apellido.setAttribute("maxlength", 12)
+    apellido.setAttribute("minlength", 2)
+    tarjeta.setAttribute("type", "number")
+    tarjeta.setAttribute("placeholder", "Ingrese el n° de su tarjeta de crédito")
+    tarjeta.setAttribute("id", "tarjeta")
+    tarjeta.setAttribute("maxlength", 16)
+    tarjeta.setAttribute("minlength", 16)
+formulario.append(nombre, apellido, tarjeta, btnPagar)
+contenedorCarrito.appendChild(formulario)
+}
 
